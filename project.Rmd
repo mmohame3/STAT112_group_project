@@ -1,0 +1,75 @@
+---
+title: "Mini-Project"
+author: Mohamed
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+
+```{r}
+#knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+```
+
+```{r}
+# Load libraries
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+```
+
+
+```{r}
+ # Load data
+raw_survey_data <- read.csv("https://www.macalester.edu/~ajohns24/data/pulse_of_the_nation.csv")
+
+names(raw_survey_data) <- c("income", "gender", "age", "party", "trump_approval", "education", "marital", "robots", "climate_change", "transformers", "science_is_honest", "vaccines_are_safe", "books", "ghosts", "fed_sci_budget", "earth_sun", "wise_unwise")
+
+raw_survey_data <- raw_survey_data %>% 
+  mutate(climate_change_binary = (climate_change == "Real and Caused by People"))
+```
+
+
+```{r}
+raw_survey_data %>% 
+  group_by(science_is_honest)
+  
+
+```
+
+
+\
+\
+
+
+
+## Part 1: Introduction
+
+
+\
+\
+\
+\
+\
+\
+
+
+
+## Part 2: Analysis
+
+
+\
+\
+\
+\
+\
+\
+
+
+
+## Part 3: Collaboration
+
+

@@ -1,6 +1,6 @@
 ---
 title: "Mini-Project"
-author: Mohamed,
+author: Mohamed
 output: 
   html_document:
     toc: true
@@ -50,7 +50,7 @@ raw_survey_data %>%
 
 
 \Jasmine is the coolest. 
-\
+\Rayan changing something
 \
 \
 \

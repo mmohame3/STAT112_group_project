@@ -12,12 +12,12 @@ html_document:
 ---
 
 
-```{r, echo=FALSE}
+```{r}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 ```
 
-```{r, echo=FALSE}
+```{r}
 # Load libraries
 library(ggplot2)
 library(dplyr)
@@ -29,7 +29,7 @@ library(tidyverse)
  (we will at party affiliation, age, fed_sci_budget, science_is_honest)
 
 
-```{r, echo= FALSE}
+```{r}
  # Load data
 raw_survey_data <- read.csv("https://www.macalester.edu/~ajohns24/data/pulse_of_the_nation.csv")
 
@@ -37,22 +37,8 @@ names(raw_survey_data) <- c("income", "gender", "age", "party", "trump_approval"
 
 raw_survey_data <- raw_survey_data %>% 
   mutate(climate_change_binary = (climate_change == "Real and Caused by People"))
-
-full_survey <- read.csv("201709_PulseOfTheNation_Raw.csv")
 ```
 
-
-## Part 1: Introduction
-
-  In September of 2017, Cards Against Humanity's, "Pulse of th Nation," partnered with research firm Survey Sampling International to elicit the opinions of thousands of Americans on various social and political topics. The entire project consisted of monthly telephone polls conducted over a two week period to learn the opinions of 1000 Americans. The specific polling data we will be analyzing is from the first poll "Pulse of the Nation" conducted beginning September 15, 2017 and concluded September 30, 2017.
-  
-  The main focus of this poll was to explore people's opinions regarding science including climate change and the safety of vaccines. The survey also asked whether people believed scientists were honest and thought the federal government was allocating enough funds to scientific research. There were also questions asked about political party affiliation and the approval rating of then President Trump. Of the respondents, over half of them were white (683 respondents identified as white) which could skew some of the answers. In terms of party affiliation, the majority of respondents considered themselves to be Independent versus being a Democrat or Republican. This could be because at the time the survey was taken, party affiliation in America was very polarized so the respondents could have been anxious or nervous to identify themselves as a member of either party out of fear of judgment or possible repercussions. 
-  
-  In this project, we will be analyzing the survey responses to answer the question: What factors affect people's views on climate change? We will specifically be looking at whether or not people believe that climate change is real and caused by humans or not. We will be analyzing how people view science in general and also how party affiliation, age, and other scientific topics may affect a person's view on climate change. 
-
-  This project was funded by Cards Against Humanity's holiday promotion "Cards Against Humanity Saves America," where people could donate $15 dollars to the company to receive special gifts and prizes. 
-  
-  
 ### Party affiliation vs Climate Change
 ```{r, echo=FALSE}
 raw_survey_data %>%
@@ -70,7 +56,7 @@ raw_survey_data %>%
 ### age vs Climate Change 
 
 
-```{r, echo=FALSE}
+```{r}
 raw_survey_data %>% 
   ggplot(aes(y = age, x = climate_change_binary))+
   geom_boxplot()
@@ -82,7 +68,7 @@ raw_survey_data %>%
 
 ### age vs Climate Change vs science_is_honest
 
-```{r, echo=FALSE}
+```{r}
 raw_survey_data %>% 
   ggplot(aes(y = age, x = climate_change_binary, fill = science_is_honest))+
   geom_boxplot() +
@@ -97,13 +83,22 @@ raw_survey_data %>%
 \
 
 
+## Part 1: Introduction
+
+  In September of 2017, Cards Against Humanity's, "Pulse of th Nation," partnered with research firm Survey Sampling International to elicit the opinions of thousands of Americans on various social and political topics. The entire project consisted of monthly telephone polls conducted over a two week period to learn the opinions of 1000 Americans. The specific polling data we will be analyzing is from the first poll "Pulse of the Nation" conducted beginning September 15, 2017 and concluded September 30, 2017.
   
+  The main focus of this poll was to explore people's opinions regarding science including climate change and the safety of vaccines. The survey also asked whether people believed scientists were honest and thought the federal government was allocating enough funds to scientific research. There were also questions asked about political party affiliation and the approval rating of then President Trump. Of the respondents, over half of them were white (683 respondents identified as white) which could skew some of the answers. In terms of party affiliation, the majority of respondents considered themselves to be Independent versus being a Democrat or Republican. This could be because at the time the survey was taken, party affiliation in America was very polarized so the respondents could have been anxious or nervous to identify themselves as a member of either party out of fear of judgment or possible repercussions. 
+  
+  In this project, we will be analyzing the survey responses to answer the question: What factors affect people's views on climate change? We will specifically be looking at whether or not people believe that climate change is real and caused by humans or not. We will be analyzing how people view science in general and also how party affiliation, age, and other scientific topics may affect a person's view on climate change. 
+
+  This project was funded by Cards Against Humanity's holiday promotion "Cards Against Humanity Saves America," where people could donate $15 dollars to the company to receive special gifts and prizes. 
+
 
 
 > Cards Against Humanity’s “Pulse of the Nation” project conducted monthly polls into people’s social views, political views, and other things.We will use data from their survey conducted September 15-30, 2017 to explore how various factors can affect people’s belief in climate change.
 
 
-```{r, echo=FALSE} 
+```{r} 
 # Number of people in the dataset 
 nrow(raw_survey_data)
 
@@ -133,7 +128,7 @@ Rayan changing something
 
 ##The Relationship between Party Affiliation and Climate Change
 
-```{r, echo=FALSE}
+```{r}
 raw_survey_data %>%
   group_by(climate_change_binary, party) %>% 
   summarise(num_of_ind = n()) %>% 
@@ -144,7 +139,7 @@ From the bar plot above, the difference in how party affiliation is linked to vi
 
 Even so, when looking at the bars individually, in this small sample, there is a much higher number of Independent and Democrat affiliated individuals who view climate change as a real issue that is caused by people. Less than half of those who identify as Republican are in the TRUE category, which calls for further research around the relationship between Party affiliation and belief in climate change.
 
-```{r, echo=FALSE}
+```{r}
 # Number of people who identified with each party 
 raw_survey_data %>%
   group_by(party) %>% 
@@ -160,7 +155,7 @@ raw_survey_data %>%
 \
 \ ## The Relationship between age and Climate Change
 
-```{r, echo=FALSE}
+```{r}
 raw_survey_data %>% 
   ggplot(aes(y = age, x = climate_change_binary))+
   geom_boxplot()
@@ -170,14 +165,14 @@ From the boxplot above,it can be seen that younger individuals who were part of 
 To further examine how age is related to views on climate change we will to explore the relationship between age and whether individuals who were part of the survey think that science is honest, to see if that can have an affect on their views on climate change. 
 
 
-##age vs Climate Change vs science_is_honest
-```{r, echo=FALSE}
+## Relationship between Age,Climate Change and agreement with the statement "Science is Honest"
+```{r}
 raw_survey_data %>% 
   ggplot(aes(y = age, x = climate_change_binary, fill = science_is_honest))+
   geom_boxplot() +
   labs(title = "Do age and belief in science affect views on climate change?", x = "Climate change is real and caused by people", y= "Age")
 ```
-From this plot, it is clear that those who agree (somewhat agree and strongly agree) with the statement that science is honest, also believe that climate change is real and  caused by people. Further, age is also 
+From this plot, it is clear that those who agree (somewhat agree and strongly agree) with the statement that science is honest, also believe that climate change is real and  caused by people. This suggests that the crossover between age 
 
 ## Part 3: Collaboration
 

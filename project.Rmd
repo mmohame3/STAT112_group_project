@@ -1,6 +1,9 @@
 ---
-title: "Mini-Project"
-author: Mohamed, Jasmine Loving, 
+author: Mohamed, Jasmine Lo
+title: "Project"
+author: Mohamed, Rayan and Jasmine
+
+
 output: 
   html_document:
     toc: true
@@ -20,6 +23,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyverse)
 ```
+ > What shapes people’s opinion on climate change?
+ (look at party affiliation, age, fed_sci_budget, science_is_honest)
 
 
 ```{r}
@@ -31,6 +36,49 @@ names(raw_survey_data) <- c("income", "gender", "age", "party", "trump_approval"
 raw_survey_data <- raw_survey_data %>% 
   mutate(climate_change_binary = (climate_change == "Real and Caused by People"))
 ```
+
+### Party affiliation vs Climate Change
+```{r}
+raw_survey_data %>%
+  group_by(climate_change_binary, party) %>% 
+  summarise(num_of_ind = n()) %>% 
+  ggplot(aes( y= num_of_ind, x = party, fill = climate_change_binary)) +
+  geom_col() 
+
+
+
+```
+
+
+
+### age vs Climate Change 
+
+
+```{r}
+raw_survey_data %>% 
+  ggplot(aes(y = age, x = climate_change_binary))+
+  geom_boxplot()
+```
+
+> From the boxplot above, younger individuals tend to believe that climate change is real and is caused by people more than the older individuals.
+
+
+
+### age vs Climate Change vs science_is_honest
+
+```{r}
+raw_survey_data %>% 
+  ggplot(aes(y = age, x = climate_change_binary, fill = science_is_honest))+
+  geom_boxplot() +
+  labs(title = "Do age and belief in science affect views on climate change?", x = "Climate change is real and caused by people", y= "Age")
+```
+> People who strongly agree with the statement that science is real also believe that climate change is real
+
+
+
+
+\
+\
 
 
 ## Part 1: Introduction
@@ -45,18 +93,85 @@ raw_survey_data <- raw_survey_data %>%
 
 
 
+> Cards Against Humanity’s “Pulse of the Nation” project conducted monthly polls into people’s social views, political views, and other things.We will use data from their survey conducted September 15-30, 2017 to explore how various factors can affect people’s belief in climate change.
+
+
+```{r} 
+# Number of people in the dataset 
+nrow(raw_survey_data)
+
+# Number of people in each party 
+raw_survey_data %>%
+  group_by(party) %>% 
+  summarise(num_of_ind = n()) 
+```
+
+
+> We can see from the calculations above that the number of people who don't identify as a democrat or a republican is high (368). The are also more individuals who identify as democrats (274) than republicans (208)
+
+\
+\
+Jasmine is the coolest. 
+Rayan changing something
+
+\
+\
+\
+\
+\
+
+
+
 
 ## Part 2: Analysis
 
+##The Relationship between Party Affiliation and Climate Change
+
+```{r}
+raw_survey_data %>%
+  group_by(climate_change_binary, party) %>% 
+  summarise(num_of_ind = n()) %>% 
+  ggplot(aes( y= num_of_ind, x = party, fill = climate_change_binary)) +
+  geom_col() 
+```
+From the bar plot above, the difference in how party affiliation is linked to views on climate change can be observed. It is important to note that these results only represent those who were part of the survey- in which the number of those who identified as Independent (368 individuals) was significantly higher than those who identified as Republican (208), Democrat (274) and Don't Know (DK)/ Refuse(REF) (150). The TRUE category includes those who believe that climate change is real and caused by people, while the FALSE category includes those who do not think climate change is real as well as people who think climate change is real but not caused by people.
+
+Even so, when looking at the bars individually, in this small sample, there is a much higher number of Independent and Democrat affiliated individuals who view climate change as a real issue that is caused by people. Less than half of those who identify as Republican are in the TRUE category, which calls for further research around the relationship between Party affiliation and belief in climate change.
+
+```{r}
+# Number of people who identified with each party 
+raw_survey_data %>%
+  group_by(party) %>% 
+  summarise(num_of_ind = n()) 
+```
+
+
 
 \
 \
 \
 \
 \
-\
+\ ## The Relationship between age and Climate Change
+
+```{r}
+raw_survey_data %>% 
+  ggplot(aes(y = age, x = climate_change_binary))+
+  geom_boxplot()
+```
+From the boxplot above,it can be seen that younger individuals who were part of the sample believe that climate change is in fact real and caused by people- more than the older individuals. This could stem from various factors, including younger individuals being more exposed to social media platforms and other sources that can shape their opinions on climate change.**edit after Jasmine finds out about age sampling**.
+
+To further examine how age is related to views on climate change we will to explore the relationship between age and whether individuals who were part of the survey think that science is honest, to see if that can have an affect on their views on climate change. 
 
 
+##age vs Climate Change vs science_is_honest
+```{r}
+raw_survey_data %>% 
+  ggplot(aes(y = age, x = climate_change_binary, fill = science_is_honest))+
+  geom_boxplot() +
+  labs(title = "Do age and belief in science affect views on climate change?", x = "Climate change is real and caused by people", y= "Age")
+```
+From this plot, it is clear that those who agree (somewhat agree and strongly agree) with the statement that science is honest, also believe that climate change is real and  caused by people. Further, age is also 
 
 ## Part 3: Collaboration
 

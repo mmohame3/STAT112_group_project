@@ -24,8 +24,10 @@ library(ggplot2)
 library(dplyr)
 library(tidyverse)
 ```
+ 
+ 
  > What shapes people’s opinion on climate change?
- (look at party affiliation, age, fed_sci_budget, science_is_honest)
+ (we will at party affiliation, age, fed_sci_budget, science_is_honest)
 
 
 ```{r}

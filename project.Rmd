@@ -33,6 +33,8 @@ names(raw_survey_data) <- c("income", "gender", "age", "party", "trump_approval"
 
 raw_survey_data <- raw_survey_data %>% 
   mutate(climate_change_binary = (climate_change == "Real and Caused by People"))
+
+full_survey <- read.csv("201709_PulseOfTheNation_Raw.csv")
 ```
 
 
@@ -47,21 +49,6 @@ raw_survey_data <- raw_survey_data %>%
 
   This project was funded by Cards Against Humanity's holiday promotion "Cards Against Humanity Saves America," where people could donate $15 dollars to the company to receive special gifts and prizes. 
   
-=======
-### Party affiliation vs Climate Change
-```{r, echo=FALSE}
-raw_survey_data %>%
-  group_by(climate_change_binary, party) %>% 
-  summarise(num_of_ind = n()) %>% 
-  ggplot(aes( y= num_of_ind, x = party, fill = climate_change_binary)) +
-  geom_col() 
-
-
-
-```
-
-
-
 
 ### age vs Climate Change 
 

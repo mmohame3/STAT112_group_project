@@ -39,7 +39,7 @@ raw_survey_data <- raw_survey_data %>%
 ```
 
 ### Party affiliation vs Climate Change
-```{r}
+```{r, echo=FALSE}
 raw_survey_data %>%
   group_by(climate_change_binary, party) %>% 
   summarise(num_of_ind = n()) %>% 
@@ -161,14 +161,14 @@ From the boxplot above,it can be seen that younger individuals who were part of 
 To further examine how age is related to views on climate change we will to explore the relationship between age and whether individuals who were part of the survey think that science is honest, to see if that can have an affect on their views on climate change. 
 
 
-##age vs Climate Change vs science_is_honest
+## Relationship between Age,Climate Change and agreement with the statement "Science is Honest"
 ```{r}
 raw_survey_data %>% 
   ggplot(aes(y = age, x = climate_change_binary, fill = science_is_honest))+
   geom_boxplot() +
   labs(title = "Do age and belief in science affect views on climate change?", x = "Climate change is real and caused by people", y= "Age")
 ```
-From this plot, it is clear that those who agree (somewhat agree and strongly agree) with the statement that science is honest, also believe that climate change is real and  caused by people. Further, age is also 
+From this plot, it is clear that those who agree (somewhat agree and strongly agree) with the statement that science is honest, also believe that climate change is real and  caused by people. This suggests that the crossover between age 
 
 ## Part 3: Collaboration
 

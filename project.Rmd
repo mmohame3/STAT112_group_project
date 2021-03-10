@@ -1,6 +1,8 @@
 ---
+author: Mohamed, Jasmine Lo
 title: "Project"
 author: Mohamed, Rayan and Jasmine
+
 
 output: 
   html_document:
@@ -82,6 +84,10 @@ raw_survey_data %>%
 
 ## Part 1: Introduction
 
+  In September of 2017, Cards Against Humanity's, "Pulse of a Nation," partnered with research firm Survey Sampling International to elicit the opinions of thousands of Americans on various social and political topics. The entire project consisted of monthly telephone polls conducted over a two week period to learn the opinions of 1000 Americans. 
+  The specific polling data we will be analyzing is from the first poll "Pulse of a Nation" conducted beginning September 15, 2017 and concluded September 30, 2017. The main focus of this poll was to explore people's opinions regarding science including climate change and the safety of vaccines. The survey also asked whether people believed scientists were honest and thought the federal government was allocating enough funds to scientific research. There were also questions asked about political party affiliation and the approval rating of then President Trump. Of the respondents, many of them were white (*NEED TO CHECK THE NUMBER!!!*) which could skew some of the answers **(if we talk about robots at all, we should address that)**. In terms of party affiliation, the majority of respondents considered themselves to be Independent versus being a Democrat or Republican **(We should check to see what ages the people are in each party)**. This could be because at the time the survey was taken, party affiliation in America was very polarized so the respondents could have been anxious or nervous to identify themselves as a member of either party out of fear of judgment or possible repercussions. 
+  This project was funded by Cards Against Humanity's holiday promotion "Cards Against Humanity Saves America," where people could donate $15 dollars to the company to receive special gifts and prizes. 
+
 
 
 > Cards Against Humanity’s “Pulse of the Nation” project conducted monthly polls into people’s social views, political views, and other things.We will use data from their survey conducted September 15-30, 2017 to explore how various factors can affect people’s belief in climate change.
@@ -110,6 +116,7 @@ Rayan changing something
 \
 \
 \
+
 
 
 

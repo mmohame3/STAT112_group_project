@@ -1,9 +1,6 @@
 ---
-author: Mohamed, Jasmine Lo
 title: "Project"
 author: Mohamed, Rayan and Jasmine
-
-
 output: 
   html_document:
     toc: true

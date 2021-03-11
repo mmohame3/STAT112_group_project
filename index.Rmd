@@ -1,7 +1,6 @@
 ---
 title: "What factors affect people's views on climate change?"
-author: Mohamed, Rayan and Jasmine
-
+author: "Mohamed, Rayan and Jasmine"
 output: 
   html_document:
     toc: true
@@ -152,3 +151,4 @@ To further examine how age is related to views on climate change we will explore
 
 Pulse of the nation is a fun data set that can only give us a broad perspective on how party affiliation, age and an estimate of to what extent one believes in scientists can potentially affect views on climate change. We believe that because the questions could be perceived as “less serious” it can possibly encourage participants to be more honest in their answers to questions surrounding climate change especially because of the tense political climate at the time the survey was taken. While we did not find definitive answers to our question, due to sampling limitations listed above, we found important links between party affiliation and belief in climate change (independent had highest belief in climate change) as well as age and climate change (younger individuals generally tended to believe more in climate change). 
 
+[final project](https://github.com/mmohame3/STAT112_group_project)
